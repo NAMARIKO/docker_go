@@ -1,0 +1,20 @@
+# ymlのバージョン
+version: '3'
+
+# コンテナサービスを指定
+services:
+    # sample(任意の名前)のサービスを作成
+    test :
+        # 同一フォルダにある Dockerfile をビルドする
+        build: ./
+        # 外部と接続する(外部ポート:dockerポート)
+        ports:
+            - "80:80"
+        # コンテナ名を指定(任意の名前)
+        container_name: test_webApp
+        # コンテナが起動し続ける
+        tty: true
+        # # ホストのディレクトリをコンテナにマウント
+        volumes:
+          - C:/Docker/webApp/app:/go/app
+        working_dir: /go/app
